@@ -169,7 +169,7 @@ const LEADERSHIP = [
 function SectionHeading({ eyebrow, title }: { eyebrow: string; title: string }) {
   return (
     <div className="mb-12">
-      <p className="font-mono text-xs uppercase tracking-[0.3em] text-primary">{eyebrow}</p>
+      <p className="font-mono text-xs uppercase tracking-[0.3em] text-accent">{eyebrow}</p>
       <h2 className="mt-3 text-3xl font-bold sm:text-4xl">{title}</h2>
       <div className="mt-4 h-px w-24 bg-gradient-accent" style={{ backgroundImage: "var(--gradient-accent)" }} />
     </div>
@@ -184,7 +184,7 @@ function Portfolio() {
       <header className="sticky top-0 z-50 border-b border-border/70 bg-background/80 backdrop-blur-md">
         <div className="mx-auto flex max-w-6xl items-center justify-between px-4 py-4">
           <a href="#about" className="flex items-center gap-2 font-mono text-sm font-semibold tracking-widest">
-            <Lock className="h-4 w-4 text-primary" />
+            <Lock className="h-4 w-4 text-accent" />
             SPENCER.SEC
           </a>
 
@@ -193,7 +193,7 @@ function Portfolio() {
               <a
                 key={item.href}
                 href={item.href}
-                className="text-sm text-muted-foreground transition-colors hover:text-primary"
+                className="text-sm text-muted-foreground transition-colors hover:text-accent"
               >
                 {item.label}
               </a>
@@ -236,7 +236,7 @@ function Portfolio() {
         <section id="about" className="hero-surface border-b border-border/60">
           <div className="mx-auto grid max-w-6xl gap-12 px-4 py-20 lg:grid-cols-2 lg:items-center">
             <div>
-              <span className="inline-flex items-center gap-2 rounded-full border border-primary/40 bg-primary/10 px-3 py-1 font-mono text-xs text-primary">
+              <span className="inline-flex items-center gap-2 rounded-full border border-accent/40 bg-accent/10 px-3 py-1 font-mono text-xs text-accent">
                 <Activity className="h-3.5 w-3.5" />
                 SOC Analyst & Network Operations Trainee
               </span>
@@ -252,7 +252,7 @@ function Portfolio() {
                 infrastructure defense.
               </p>
 
-              <blockquote className="mt-6 border-l-2 border-primary/60 pl-4 font-mono text-sm italic text-muted-foreground">
+              <blockquote className="mt-6 border-l-2 border-accent/60 pl-4 font-mono text-sm italic text-muted-foreground">
                 "Every attack leaves evidence. Every defense begins with preparation."
               </blockquote>
 
@@ -279,7 +279,7 @@ function Portfolio() {
             </div>
 
             <div className="space-y-6">
-              <div className="panel glow overflow-hidden p-3">
+              <div className="panel overflow-hidden p-3">
                 <div className="relative overflow-hidden rounded-md">
                   <img
                     src={spencerPhoto.url}
@@ -288,10 +288,10 @@ function Portfolio() {
                   />
                   <div className="absolute inset-x-0 bottom-0 flex items-center justify-between gap-3 bg-background/85 px-4 py-3 backdrop-blur-sm">
                     <div className="flex items-center gap-2 text-sm font-medium">
-                      <CheckCircle2 className="h-4 w-4 text-primary" />
+                      <CheckCircle2 className="h-4 w-4 text-accent" />
                       Asafa Mahfuz Abiodun
                     </div>
-                    <span className="rounded-sm border border-primary/40 px-2 py-0.5 font-mono text-[10px] tracking-widest text-primary">
+                    <span className="rounded-sm border border-accent/40 px-2 py-0.5 font-mono text-[10px] tracking-widest text-accent">
                       VERIFIED ID
                     </span>
                   </div>
@@ -301,13 +301,13 @@ function Portfolio() {
               <div className="panel overflow-hidden">
                 <div className="flex items-center justify-between border-b border-border px-4 py-2.5">
                   <div className="flex items-center gap-2 font-mono text-xs text-muted-foreground">
-                    <Terminal className="h-3.5 w-3.5 text-primary" />
+                    <Terminal className="h-3.5 w-3.5 text-accent" />
                     system_status.sh
                   </div>
                   <div className="flex gap-1.5">
                     <span className="h-2.5 w-2.5 rounded-full bg-destructive/70" />
                     <span className="h-2.5 w-2.5 rounded-full bg-chart-3/70" />
-                    <span className="h-2.5 w-2.5 rounded-full bg-primary/70" />
+                    <span className="h-2.5 w-2.5 rounded-full bg-accent/70" />
                   </div>
                 </div>
                 <div className="space-y-2 p-4 font-mono text-xs sm:text-sm">
@@ -318,7 +318,7 @@ function Portfolio() {
                     ["FOCUS", "Blue Team / SOC / Incident Response"],
                   ].map(([k, v]) => (
                     <p key={k} className="text-muted-foreground">
-                      <span className="text-primary">{k}:</span> {v}
+                      <span className="text-accent">{k}:</span> {v}
                     </p>
                   ))}
                 </div>
@@ -333,11 +333,11 @@ function Portfolio() {
             <SectionHeading eyebrow="Career Journey" title="Professional Experience" />
             <div className="space-y-6">
               {EXPERIENCE.map((job) => (
-                <article key={job.role} className="panel p-6">
+                <article key={job.role} className="panel panel-hover p-6">
                   <div className="flex flex-wrap items-start justify-between gap-3">
                     <div>
                       <h3 className="flex items-center gap-2 text-lg font-semibold">
-                        <job.icon className="h-5 w-5 text-primary" />
+                        <job.icon className="h-5 w-5 text-accent" />
                         {job.role}
                       </h3>
                       <p className="mt-1 text-sm text-muted-foreground">{job.org}</p>
@@ -349,7 +349,7 @@ function Portfolio() {
                   <ul className="mt-5 space-y-3">
                     {job.points.map((p) => (
                       <li key={p} className="flex gap-3 text-sm text-muted-foreground">
-                        <ChevronRight className="mt-0.5 h-4 w-4 shrink-0 text-primary" />
+                        <ChevronRight className="mt-0.5 h-4 w-4 shrink-0 text-accent" />
                         {p}
                       </li>
                     ))}
@@ -366,15 +366,15 @@ function Portfolio() {
             <SectionHeading eyebrow="Technical Matrix" title="Core Competencies" />
             <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
               {SKILLS.map((group) => (
-                <div key={group.title} className="panel p-6">
+                <div key={group.title} className="panel panel-hover p-6">
                   <div className="flex items-center gap-2">
-                    <group.icon className="h-5 w-5 text-primary" />
+                    <group.icon className="h-5 w-5 text-accent" />
                     <h3 className="font-semibold">{group.title}</h3>
                   </div>
                   <ul className="mt-4 space-y-2">
                     {group.items.map((item) => (
                       <li key={item} className="font-mono text-xs text-muted-foreground">
-                        <span className="text-primary">▸</span> {item}
+                        <span className="text-accent">▸</span> {item}
                       </li>
                     ))}
                   </ul>
@@ -392,15 +392,15 @@ function Portfolio() {
               {LEADERSHIP.map((role) => (
                 <div
                   key={role.role + role.org}
-                  className={`panel p-6 ${role.current ? "glow" : ""}`}
+                  className={`panel panel-hover p-6 ${role.current ? "ring-1 ring-accent/30" : ""}`}
                 >
                   {role.current && (
-                    <span className="mb-3 inline-flex items-center gap-2 rounded-full bg-primary/10 px-3 py-1 font-mono text-[10px] uppercase tracking-widest text-primary">
+                    <span className="mb-3 inline-flex items-center gap-2 rounded-full bg-accent/10 px-3 py-1 font-mono text-[10px] uppercase tracking-widest text-accent">
                       <Award className="h-3 w-3" /> Current Leadership
                     </span>
                   )}
                   <h3 className="text-lg font-semibold">{role.role}</h3>
-                  <p className="mt-1 flex items-start gap-2 text-sm text-primary/80">
+                  <p className="mt-1 flex items-start gap-2 text-sm text-accent/80">
                     <Users className="mt-0.5 h-4 w-4 shrink-0" />
                     {role.org}
                   </p>
@@ -416,15 +416,15 @@ function Portfolio() {
           <div className="mx-auto max-w-6xl px-4 py-20">
             <SectionHeading eyebrow="Academic Background" title="Education" />
             <div className="panel flex flex-col gap-6 p-6 sm:flex-row sm:items-center">
-              <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-lg bg-primary/10">
-                <GraduationCap className="h-7 w-7 text-primary" />
+              <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-lg bg-accent/10">
+                <GraduationCap className="h-7 w-7 text-accent" />
               </div>
               <div>
                 <h3 className="text-lg font-semibold">Bachelor of Science (B.Sc.) in Computer Science</h3>
                 <p className="mt-1 text-sm text-muted-foreground">
                   Ladoke Akintola University of Technology (LAUTECH), Nigeria
                 </p>
-                <p className="mt-1 font-mono text-xs text-primary">Status: In View</p>
+                <p className="mt-1 font-mono text-xs text-accent">Status: In View</p>
               </div>
             </div>
             <div className="mt-6 flex flex-wrap gap-2">
@@ -453,17 +453,17 @@ function Portfolio() {
               <div className="mt-8 space-y-4">
                 <a
                   href="mailto:mahfuzasafa07@gmail.com"
-                  className="flex items-center gap-3 text-sm text-muted-foreground transition-colors hover:text-primary"
+                  className="flex items-center gap-3 text-sm text-muted-foreground transition-colors hover:text-accent"
                 >
-                  <Mail className="h-4 w-4 text-primary" />
+                  <Mail className="h-4 w-4 text-accent" />
                   mahfuzasafa07@gmail.com
                 </a>
                 <p className="flex items-center gap-3 text-sm text-muted-foreground">
-                  <MapPin className="h-4 w-4 text-primary" />
+                  <MapPin className="h-4 w-4 text-accent" />
                   Abuja, Nigeria
                 </p>
                 <p className="flex items-center gap-3 text-sm text-muted-foreground">
-                  <Globe className="h-4 w-4 text-primary" />
+                  <Globe className="h-4 w-4 text-accent" />
                   mahfuzasafa.com
                 </p>
               </div>
