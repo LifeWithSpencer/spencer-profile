@@ -265,6 +265,11 @@ function Portfolio() {
                     <Github className="h-4 w-4" /> GitHub Profile
                   </a>
                 </Button>
+                <Button asChild size="lg" variant="outline">
+                  <a href="https://x.com/lifewithspencer" target="_blank" rel="noreferrer">
+                    <Twitter className="h-4 w-4" /> X (Twitter)
+                  </a>
+                </Button>
               </div>
             </div>
 
