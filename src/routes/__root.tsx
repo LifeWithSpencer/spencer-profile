@@ -77,15 +77,21 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Asafa Mahfuz Abiodun — Cybersecurity Portfolio" },
+      { title: "Asafa Mahfuz Abiodun (Spencer) — SOC & Network Analyst" },
       {
         name: "description",
         content:
-          "SOC analyst and network operations specialist focused on defensive security and incident response.",
+          "Portfolio of Asafa Mahfuz Abiodun (Spencer). NOC Intern at Galaxy Backbone, SOC Analyst, and student leader specializing in blue team defense.",
       },
       { name: "author", content: "Asafa Mahfuz Abiodun" },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
+      { property: "og:title", content: "Asafa Mahfuz Abiodun (Spencer) — SOC & Network Analyst" },
+      { name: "twitter:title", content: "Asafa Mahfuz Abiodun (Spencer) — SOC & Network Analyst" },
+      { property: "og:description", content: "Portfolio of Asafa Mahfuz Abiodun (Spencer). NOC Intern at Galaxy Backbone, SOC Analyst, and student leader specializing in blue team defense." },
+      { name: "twitter:description", content: "Portfolio of Asafa Mahfuz Abiodun (Spencer). NOC Intern at Galaxy Backbone, SOC Analyst, and student leader specializing in blue team defense." },
+      { property: "og:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/8900d5b8-b8d6-47cf-877d-2bf61ec57f5e/id-preview-8c41e622--36ab168d-2711-48e1-9226-cd2766fba154.lovable.app-1785940913970.png" },
+      { name: "twitter:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/8900d5b8-b8d6-47cf-877d-2bf61ec57f5e/id-preview-8c41e622--36ab168d-2711-48e1-9226-cd2766fba154.lovable.app-1785940913970.png" },
     ],
     links: [
       {
@@ -98,7 +104,6 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
         rel: "stylesheet",
         href: "https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=DM+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap",
       },
-      { rel: "icon", href: "/favicon.ico", type: "image/x-icon" },
     ],
   }),
 

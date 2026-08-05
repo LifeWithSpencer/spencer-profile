@@ -34,13 +34,13 @@ export const Route = createFileRoute("/")({
       {
         name: "description",
         content:
-          "Portfolio of Asafa Mahfuz Abiodun: SOC analyst, NOC intern at Galaxy Backbone, and student leader specializing in blue team defense and incident response.",
+          "Portfolio of Asafa Mahfuz Abiodun (Spencer). NOC Intern at Galaxy Backbone, SOC Analyst, and student leader specializing in blue team defense.",
       },
       { property: "og:title", content: "Asafa Mahfuz Abiodun (Spencer) — SOC & Network Analyst" },
       {
         property: "og:description",
         content:
-          "Cybersecurity analyst and network operations specialist focused on defensive security, monitoring, and incident response.",
+          "Portfolio of Asafa Mahfuz Abiodun (Spencer). NOC Intern at Galaxy Backbone, SOC Analyst, and student leader specializing in blue team defense.",
       },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
