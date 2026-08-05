@@ -333,7 +333,7 @@ function Portfolio() {
             <SectionHeading eyebrow="Career Journey" title="Professional Experience" />
             <div className="space-y-6">
               {EXPERIENCE.map((job) => (
-                <article key={job.role} className="panel p-6">
+                <article key={job.role} className="panel panel-hover p-6">
                   <div className="flex flex-wrap items-start justify-between gap-3">
                     <div>
                       <h3 className="flex items-center gap-2 text-lg font-semibold">
@@ -366,7 +366,7 @@ function Portfolio() {
             <SectionHeading eyebrow="Technical Matrix" title="Core Competencies" />
             <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
               {SKILLS.map((group) => (
-                <div key={group.title} className="panel p-6">
+                <div key={group.title} className="panel panel-hover p-6">
                   <div className="flex items-center gap-2">
                     <group.icon className="h-5 w-5 text-accent" />
                     <h3 className="font-semibold">{group.title}</h3>
@@ -392,7 +392,7 @@ function Portfolio() {
               {LEADERSHIP.map((role) => (
                 <div
                   key={role.role + role.org}
-                  className={`panel p-6 ${role.current ? "ring-1 ring-accent/30" : ""}`}
+                  className={`panel panel-hover p-6 ${role.current ? "ring-1 ring-accent/30" : ""}`}
                 >
                   {role.current && (
                     <span className="mb-3 inline-flex items-center gap-2 rounded-full bg-accent/10 px-3 py-1 font-mono text-[10px] uppercase tracking-widest text-accent">
