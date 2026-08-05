@@ -266,6 +266,11 @@ function Portfolio() {
                   </a>
                 </Button>
                 <Button asChild size="lg" variant="outline">
+                  <a href="https://www.linkedin.com/in/mahfuz-asafa-37832b292/" target="_blank" rel="noreferrer">
+                    <Linkedin className="h-4 w-4" /> LinkedIn Profile
+                  </a>
+                </Button>
+                <Button asChild size="lg" variant="outline">
                   <a href="https://x.com/lifewithspencer" target="_blank" rel="noreferrer">
                     <Twitter className="h-4 w-4" /> X (Twitter)
                   </a>
