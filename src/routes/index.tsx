@@ -9,6 +9,7 @@ import {
   Mail,
   Github,
   Linkedin,
+  Twitter,
   Globe,
   Server,
   Activity,
