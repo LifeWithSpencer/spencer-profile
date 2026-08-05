@@ -26,7 +26,6 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
-import spencerPhoto from "@/assets/spencer.jpg.asset.json";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -282,7 +281,7 @@ function Portfolio() {
               <div className="panel overflow-hidden p-3">
                 <div className="relative overflow-hidden rounded-md">
                   <img
-                    src={spencerPhoto.url}
+                    src="/personal.jpg"
                     alt="Portrait of Asafa Mahfuz Abiodun (Spencer)"
                     className="aspect-[4/5] w-full object-cover"
                   />
