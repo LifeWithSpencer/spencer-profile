@@ -474,6 +474,11 @@ function Portfolio() {
                     <Linkedin className="h-4 w-4" />
                   </a>
                 </Button>
+                <Button asChild variant="outline" size="icon" aria-label="X (Twitter)">
+                  <a href="https://x.com/lifewithspencer" target="_blank" rel="noreferrer">
+                    <Twitter className="h-4 w-4" />
+                  </a>
+                </Button>
               </div>
             </div>
 
