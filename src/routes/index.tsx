@@ -134,9 +134,14 @@ const LEADERSHIP = [
     current: true,
   },
   {
-    role: "Chief of Staff to President",
-    org: "NAOSS, LAUTECH Chapter — Omoluabi Ride 3.0 (2025) & 4.0 (2026)",
-    desc: "Supervised executive workflow, inter-departmental projects, administrative operations, and strategic planning across consecutive tenure administrations.",
+    role: "Publicity Secretary",
+    org: "NAOSS, LAUTECH Chapter — Omoluabi Ride 4.0 (2026)",
+    desc: "Directing media campaigns, publicity strategies, and digital communications for Omoluabi Ride 4.0.",
+  },
+  {
+    role: "Publicity Secretary",
+    org: "NAOSS, LAUTECH Chapter — Omoluabi Ride 3.0 (2025)",
+    desc: "Managed publicity operations, brand awareness, and information dissemination across media channels.",
   },
   {
     role: "Public Relations Officer",
@@ -147,6 +152,11 @@ const LEADERSHIP = [
     role: "Director of Documentation",
     org: "Office of the P.R.O., NANS JCC Oyo Axis",
     desc: "Managed record preservation, official reporting, and state-wide student leadership communications.",
+  },
+  {
+    role: "Chief of Staff to President",
+    org: "NAOSS, LAUTECH Chapter (2025)",
+    desc: "Supervised executive workflow, inter-departmental projects, and administrative operations.",
   },
   {
     role: "Senator",
@@ -164,7 +174,6 @@ const LEADERSHIP = [
     desc: "Led resource mobilization and official legislative equipment acquisition projects.",
   },
 ];
-
 function SectionHeading({ eyebrow, title }: { eyebrow: string; title: string }) {
   return (
     <div className="mb-12">
