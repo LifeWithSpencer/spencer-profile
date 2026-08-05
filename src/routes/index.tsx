@@ -134,6 +134,11 @@ const LEADERSHIP = [
     current: true,
   },
   {
+    role: "Chief of Staff to President",
+    org: "NAOSS, LAUTECH Chapter — Omoluabi Ride 3.0 (2025) & 4.0 (2026)",
+    desc: "Supervised executive workflow, inter-departmental projects, administrative operations, and strategic planning across consecutive tenure administrations.",
+  },
+  {
     role: "Public Relations Officer",
     org: "NAIS, LAUTECH Chapter",
     desc: "Directed external communications, student engagement strategies, and official media releases.",
@@ -142,11 +147,6 @@ const LEADERSHIP = [
     role: "Director of Documentation",
     org: "Office of the P.R.O., NANS JCC Oyo Axis",
     desc: "Managed record preservation, official reporting, and state-wide student leadership communications.",
-  },
-  {
-    role: "Chief of Staff to President",
-    org: "NAOSS, LAUTECH Chapter (2025)",
-    desc: "Supervised executive workflow, inter-departmental projects, and administrative operations.",
   },
   {
     role: "Senator",
