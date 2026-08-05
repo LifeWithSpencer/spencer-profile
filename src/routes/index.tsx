@@ -9,6 +9,7 @@ import {
   Mail,
   Github,
   Linkedin,
+  Twitter,
   Globe,
   Server,
   Activity,
@@ -264,6 +265,11 @@ function Portfolio() {
                     <Github className="h-4 w-4" /> GitHub Profile
                   </a>
                 </Button>
+                <Button asChild size="lg" variant="outline">
+                  <a href="https://x.com/lifewithspencer" target="_blank" rel="noreferrer">
+                    <Twitter className="h-4 w-4" /> X (Twitter)
+                  </a>
+                </Button>
               </div>
             </div>
 
@@ -466,6 +472,11 @@ function Portfolio() {
                 <Button asChild variant="outline" size="icon" aria-label="LinkedIn">
                   <a href="https://linkedin.com" target="_blank" rel="noreferrer">
                     <Linkedin className="h-4 w-4" />
+                  </a>
+                </Button>
+                <Button asChild variant="outline" size="icon" aria-label="X (Twitter)">
+                  <a href="https://x.com/lifewithspencer" target="_blank" rel="noreferrer">
+                    <Twitter className="h-4 w-4" />
                   </a>
                 </Button>
               </div>
