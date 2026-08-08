@@ -21,6 +21,7 @@ import {
   Menu,
   X,
   MapPin,
+  FileText,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -174,6 +175,7 @@ const LEADERSHIP = [
     desc: "Led resource mobilization and official legislative equipment acquisition projects.",
   },
 ];
+
 function SectionHeading({ eyebrow, title }: { eyebrow: string; title: string }) {
   return (
     <div className="mb-12">
@@ -267,6 +269,11 @@ function Portfolio() {
               <div className="mt-8 flex flex-wrap gap-3">
                 <Button asChild size="lg">
                   <a href="#contact">Contact Me</a>
+                </Button>
+                <Button asChild size="lg" className="bg-accent text-accent-foreground hover:bg-accent/90">
+                  <a href="/Asafa_Mahfuz_Abiodun_CV.pdf" download="Asafa_Mahfuz_Abiodun_CV.pdf">
+                    <FileText className="mr-2 h-4 w-4" /> Download CV
+                  </a>
                 </Button>
                 <Button asChild size="lg" variant="outline">
                   <a href="https://github.com" target="_blank" rel="noreferrer">
