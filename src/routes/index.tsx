@@ -62,7 +62,7 @@ const NAV = [
 const EXPERIENCE = [
   {
     role: "Network Operations Centre (NOC) Intern",
-    org: "Galaxy Backbone Ltd. — Abuja, Nigeria",
+    org: "Galaxy Backbone Ltd. — Abuja, Nigeria (On-Site)",
     period: "2026 – Present",
     icon: Server,
     points: [
@@ -74,7 +74,7 @@ const EXPERIENCE = [
   },
   {
     role: "Information Technology Intern (SIWES)",
-    org: "SQI College of ICT — Ogbomoso, Oyo State",
+    org: "SQI College of ICT — Ogbomoso, Oyo State (On-Site)",
     period: "Aug 2025 – Nov 2025",
     icon: Code,
     points: [
@@ -475,7 +475,7 @@ function Portfolio() {
                 </a>
                 <p className="flex items-center gap-3 text-sm text-muted-foreground">
                   <MapPin className="h-4 w-4 text-accent" />
-                  Abuja, Nigeria
+                  Lagos, Nigeria
                 </p>
                 <p className="flex items-center gap-3 text-sm text-muted-foreground">
                   <Globe className="h-4 w-4 text-accent" />
