@@ -188,6 +188,38 @@ function SectionHeading({ eyebrow, title }: { eyebrow: string; title: string }) 
 
 function Portfolio() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [formSubmitted, setFormSubmitted] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+
+    const form = e.currentTarget;
+    const data = new FormData(form);
+
+    try {
+      const response = await fetch("https://formspree.io/f/mrpzeylw", {
+        method: "POST",
+        body: data,
+        headers: {
+          Accept: "application/json",
+        },
+      });
+
+      if (response.ok) {
+        form.reset();
+        setFormSubmitted(true);
+        setTimeout(() => setFormSubmitted(false), 5000);
+      } else {
+        alert("There was an issue submitting your message. Please try again.");
+      }
+    } catch (error) {
+      alert("Error submitting form. Please check your network connection.");
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
 
   return (
     <div className="min-h-screen">
@@ -502,11 +534,13 @@ function Portfolio() {
               </div>
             </div>
 
-            <form
-              className="panel space-y-4 p-6"
-              action="https://formspree.io/f/mrpzeylw"
-              method="POST"
-            >
+            <form className="panel space-y-4 p-6" onSubmit={handleSubmit}>
+              {formSubmitted && (
+                <div className="rounded-md border border-accent/40 bg-accent/10 p-3 font-mono text-sm text-accent">
+                  ✓ Message sent successfully! I will get back to you soon.
+                </div>
+              )}
+
               <div className="grid gap-4 sm:grid-cols-2">
                 <div className="space-y-2">
                   <Label htmlFor="name">Name</Label>
@@ -525,8 +559,8 @@ function Portfolio() {
                 <Label htmlFor="message">Message</Label>
                 <Textarea id="message" name="message" rows={5} placeholder="Write your message..." required />
               </div>
-              <Button type="submit" className="w-full">
-                Send Message
+              <Button type="submit" className="w-full" disabled={isSubmitting}>
+                {isSubmitting ? "Sending..." : "Send Message"}
               </Button>
             </form>
           </div>
