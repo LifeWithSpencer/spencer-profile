@@ -502,24 +502,28 @@ function Portfolio() {
               </div>
             </div>
 
-            <form className="panel space-y-4 p-6" onSubmit={(e) => e.preventDefault()}>
+            <form
+              className="panel space-y-4 p-6"
+              action="https://formspree.io/f/mrpzeylw"
+              method="POST"
+            >
               <div className="grid gap-4 sm:grid-cols-2">
                 <div className="space-y-2">
                   <Label htmlFor="name">Name</Label>
-                  <Input id="name" placeholder="Your name" />
+                  <Input id="name" name="name" placeholder="Your name" required />
                 </div>
                 <div className="space-y-2">
                   <Label htmlFor="email">Email</Label>
-                  <Input id="email" type="email" placeholder="you@example.com" />
+                  <Input id="email" name="email" type="email" placeholder="you@example.com" required />
                 </div>
               </div>
               <div className="space-y-2">
                 <Label htmlFor="subject">Subject</Label>
-                <Input id="subject" placeholder="How can I help?" />
+                <Input id="subject" name="subject" placeholder="How can I help?" required />
               </div>
               <div className="space-y-2">
                 <Label htmlFor="message">Message</Label>
-                <Textarea id="message" rows={5} placeholder="Write your message..." />
+                <Textarea id="message" name="message" rows={5} placeholder="Write your message..." required />
               </div>
               <Button type="submit" className="w-full">
                 Send Message
