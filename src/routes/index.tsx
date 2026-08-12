@@ -35,13 +35,13 @@ export const Route = createFileRoute("/")({
       {
         name: "description",
         content:
-          "Portfolio of Asafa Mahfuz Abiodun (Spencer). NOC Intern at Galaxy Backbone, SOC Analyst, and student leader specializing in blue team defense.",
+          "Portfolio of Asafa Mahfuz Abiodun (Spencer). SOC Analyst, and student leader specializing in blue team defense.",
       },
       { property: "og:title", content: "Asafa Mahfuz Abiodun (Spencer) — SOC & Network Analyst" },
       {
         property: "og:description",
         content:
-          "Portfolio of Asafa Mahfuz Abiodun (Spencer). NOC Intern at Galaxy Backbone, SOC Analyst, and student leader specializing in blue team defense.",
+          "Portfolio of Asafa Mahfuz Abiodun (Spencer). SOC Analyst, and student leader specializing in blue team defense.",
       },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
@@ -60,18 +60,6 @@ const NAV = [
 ];
 
 const EXPERIENCE = [
-  {
-    role: "Network Operations Centre (NOC) Intern",
-    org: "Galaxy Backbone Ltd. — Abuja, Nigeria (On-Site)",
-    period: "2026 – Present",
-    icon: Server,
-    points: [
-      "Monitor enterprise network infrastructure to ensure high availability and operational efficiency.",
-      "Support incident detection, escalation, and resolution within the Network Operations Centre.",
-      "Assist in troubleshooting network and connectivity challenges across systems.",
-      "Prepare operational reports and technical documentation while gaining hands-on enterprise IT service delivery experience.",
-    ],
-  },
   {
     role: "Information Technology Intern (SIWES)",
     org: "SQI College of ICT — Ogbomoso, Oyo State (On-Site)",
@@ -360,7 +348,6 @@ function Portfolio() {
                 <div className="space-y-2 p-4 font-mono text-xs sm:text-sm">
                   {[
                     ["HANDLE", "SPENCER"],
-                    ["ROLE", "NOC Intern @ Galaxy Backbone"],
                     ["LEADERSHIP", "President, NAIS LAUTECH"],
                     ["FOCUS", "Blue Team / SOC / Incident Response"],
                   ].map(([k, v]) => (
