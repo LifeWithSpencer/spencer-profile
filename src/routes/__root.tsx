@@ -1,665 +1,188 @@
-import { createFileRoute } from "@tanstack/react-router";
-import { useState } from "react";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import {
-  Shield,
-  Network,
-  Terminal,
-  Users,
-  GraduationCap,
-  Mail,
-  Github,
-  Linkedin,
-  Twitter,
-  Globe,
-  Server,
-  Activity,
-  Award,
-  Lock,
-  ChevronRight,
-  Code,
-  CheckCircle2,
-  Menu,
-  X,
-  MapPin,
-  FileText,
-  Cpu,
-  Layers,
-} from "lucide-react";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Textarea } from "@/components/ui/textarea";
-import { Label } from "@/components/ui/label";
+  Outlet,
+  Link,
+  createRootRouteWithContext,
+  useRouter,
+  HeadContent,
+  Scripts,
+} from "@tanstack/react-router";
+import { useEffect, type ReactNode } from "react";
 
-export const Route = createFileRoute("/")({
-  head: () => ({
-    meta: [
-      { title: "Asafa Mahfuz Abiodun (Spencer) — Enterprise/NSS & Security Specialist" },
-      {
-        name: "description",
-        content:
-          "Portfolio of Asafa Mahfuz Abiodun (Spencer). Enterprise and Network Support Services Intern at Galaxy Backbone, Cybersecurity Specialist, and LAUTECH Student Leader.",
-      },
-      { property: "og:title", content: "Asafa Mahfuz Abiodun (Spencer) — Enterprise/NSS & Security Specialist" },
-      {
-        property: "og:description",
-        content:
-          "Portfolio of Asafa Mahfuz Abiodun (Spencer). Enterprise and Network Support Services Intern at Galaxy Backbone, Cybersecurity Specialist, and LAUTECH Student Leader.",
-      },
-      { property: "og:type", content: "website" },
-      { name: "twitter:card", content: "summary_large_image" },
-    ],
-  }),
-  component: Portfolio,
-});
+import appCss from "../styles.css?url";
+import { reportLovableError } from "../lib/lovable-error-reporting";
 
-const NAV = [
-  { label: "About", href: "#about" },
-  { label: "Experience", href: "#experience" },
-  { label: "Projects", href: "#projects" },
-  { label: "Skills", href: "#skills" },
-  { label: "Leadership", href: "#leadership" },
-  { label: "Education", href: "#education" },
-  { label: "Contact", href: "#contact" },
-];
-
-const EXPERIENCE = [
-  {
-    role: "Enterprise/NSS Intern",
-    org: "Galaxy Backbone",
-    period: "August 2026 – Present",
-    icon: Server,
-    points: [
-      "Monitored and supported enterprise network infrastructure within the Enterprise and Network Support Services unit.",
-      "Diagnosed connectivity issues, reconfigured IP telephony endpoints, and maintained network uptime across enterprise systems.",
-      "Collaborated with support engineers on diagnostics, hardware auditing, and infrastructure maintenance across public sector networks.",
-    ],
-  },
-  {
-    role: "Cybersecurity Intern",
-    org: "SQI College of ICT",
-    period: "August 2025 – November 2025",
-    icon: Shield,
-    points: [
-      "Conducted defensive security assessments and vulnerability remediation exercises across simulated networked environments.",
-      "Integrated security best practices into fullstack web development training modules and mentored trainees on core cybersecurity concepts.",
-      "Formulated hands-on technical lab curriculums covering packet inspection, reconnaissance, and system hardening.",
-    ],
-  },
-];
-
-const PROJECTS = [
-  {
-    title: "FluxGuard Distributed Rate Limiter and API Gateway",
-    stack: ["Python", "FastAPI", "Redis", "Docker", "Nginx", "Lua"],
-    desc: "A horizontally scalable distributed API gateway supporting sliding-window and token-bucket rate limiting with atomic Redis Lua script execution. Implemented an asynchronous circuit breaker with local in-memory fallback and zero fail-open exposure. Benchmarked under 500 concurrent workers with zero token leakage.",
-  },
-  {
-    title: "CerberusCLI Autonomous SAST Engine and Security Linter",
-    stack: ["Python", "AST", "Static Analysis", "SARIF", "Click", "Rich"],
-    desc: "An autonomous Python SAST CLI scanner using ast.NodeVisitor with symbol aliasing resolution and intra-procedural scope-isolated taint tracking. Features modular plugins detecting SQL injection, command execution, unsafe deserialization, and weak cryptography with SARIF 2.1.0 output for CI/CD integration.",
-  },
-];
-
-const SKILLS = [
-  {
-    title: "Languages & Frameworks",
-    icon: Code,
-    items: [
-      "Python",
-      "Node.js",
-      "FastAPI",
-      "Express",
-      "Bash",
-      "Lua",
-      "RESTful APIs",
-      "HTML5 & CSS3",
-    ],
-  },
-  {
-    title: "Cybersecurity & Analysis",
-    icon: Shield,
-    items: [
-      "SAST / AST Analysis",
-      "Taint Tracking",
-      "Shannon Entropy",
-      "OWASP Top 10",
-      "CWE Vulnerability Mapping",
-      "Wireshark & Burp Suite",
-      "Network Reconnaissance",
-      "Threat Hunting",
-    ],
-  },
-  {
-    title: "Cloud & Storage",
-    icon: Layers,
-    items: [
-      "Redis",
-      "MongoDB",
-      "Nginx",
-      "Docker",
-      "AWS & Azure",
-      "VirtualBox",
-      "Netlify & Hostinger DNS",
-    ],
-  },
-  {
-    title: "Networking & Systems",
-    icon: Network,
-    items: [
-      "Linux (Pop!_OS, Ubuntu CLI)",
-      "Windows OS",
-      "Cisco Packet Tracer",
-      "Git & GitHub",
-      "Click CLI & Rich",
-      "Infrastructure Monitoring",
-    ],
-  },
-];
-
-const LEADERSHIP = [
-  {
-    role: "President",
-    org: "National Association of Ikire Students (NAIS), LAUTECH Chapter",
-    desc: "Leading student governance initiatives, coordinating executive committee operations, managing stakeholder relations, and directing student advocacy across campus.",
-    period: "May 2026 – Present",
-    current: true,
-  },
-  {
-    role: "Secretary General",
-    org: "LAUTECH Students Union Government (LSUG)",
-    desc: "Serving as chief administrative officer, overseeing institutional documentation, official correspondence, and cross-executive governance.",
-    period: "July 2026 – Present",
-    current: true,
-  },
-  {
-    role: "Co-Organizer",
-    org: "Cloud Native Ogbomoso",
-    desc: "Spearheading a developer community focused on cloud-native technologies, organizing meetups, and fostering technical collaboration among students and engineers.",
-    period: "January 2026 – Present",
-    current: true,
-  },
-  {
-    role: "Publicity Secretary",
-    org: "NAOSS, LAUTECH Chapter — Omoluabi Ride 4.0 (2026)",
-    desc: "Directing media campaigns, publicity strategies, and digital communications for Omoluabi Ride 4.0.",
-  },
-  {
-    role: "Publicity Secretary",
-    org: "NAOSS, LAUTECH Chapter — Omoluabi Ride 3.0 (2025)",
-    desc: "Managed publicity operations, brand awareness, and information dissemination across media channels.",
-  },
-  {
-    role: "Public Relations Officer",
-    org: "NAIS, LAUTECH Chapter",
-    desc: "Directed external communications, student engagement strategies, and official media releases.",
-  },
-  {
-    role: "Director of Documentation",
-    org: "Office of the P.R.O., NANS JCC Oyo Axis",
-    desc: "Managed record preservation, official reporting, and state-wide student leadership communications.",
-  },
-  {
-    role: "Chief of Staff to President",
-    org: "NAOSS, LAUTECH Chapter (2025)",
-    desc: "Supervised executive workflow, inter-departmental projects, and administrative operations.",
-  },
-  {
-    role: "Senator",
-    org: "NAOSS Senate Council",
-    desc: "Represented Ikire, Apomu & Ikoyi Constituency in parliamentary proceedings and policy drafting.",
-  },
-  {
-    role: "Course Representative",
-    org: "Department of Computer Science, LAUTECH",
-    desc: "Liaised between academic faculty staff and undergraduate computer science students.",
-  },
-  {
-    role: "Committee Chairman",
-    org: "NAOSS Senate Mace Procurement Committee",
-    desc: "Led resource mobilization and official legislative equipment acquisition projects.",
-  },
-];
-
-function SectionHeading({ eyebrow, title }: { eyebrow: string; title: string }) {
+function NotFoundComponent() {
   return (
-    <div className="mb-12">
-      <p className="font-mono text-xs uppercase tracking-[0.3em] text-accent">{eyebrow}</p>
-      <h2 className="mt-3 text-3xl font-bold sm:text-4xl">{title}</h2>
-      <div className="mt-4 h-px w-24 bg-gradient-accent" style={{ backgroundImage: "var(--gradient-accent)" }} />
+    <div className="flex min-h-screen items-center justify-center bg-background px-4">
+      <div className="max-w-md text-center">
+        <h1 className="text-7xl font-bold text-foreground">404</h1>
+        <h2 className="mt-4 text-xl font-semibold text-foreground">Page not found</h2>
+        <p className="mt-2 text-sm text-muted-foreground">
+          The page you are looking for does not exist or has been moved.
+        </p>
+        <div className="mt-6">
+          <Link
+            to="/"
+            className="inline-flex items-center justify-center rounded-md bg-primary px-4 py-2 text-sm font-medium text-primary-foreground transition-colors hover:bg-primary/90"
+          >
+            Go home
+          </Link>
+        </div>
+      </div>
     </div>
   );
 }
 
-function Portfolio() {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [formSubmitted, setFormSubmitted] = useState(false);
-  const [isSubmitting, setIsSubmitting] = useState(false);
-
-  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    setIsSubmitting(true);
-
-    const form = e.currentTarget;
-    const data = new FormData(form);
-
-    try {
-      const response = await fetch("https://formspree.io/f/mrpzeylw", {
-        method: "POST",
-        body: data,
-        headers: {
-          Accept: "application/json",
-        },
-      });
-
-      if (response.ok) {
-        form.reset();
-        setFormSubmitted(true);
-        setTimeout(() => setFormSubmitted(false), 5000);
-      } else {
-        alert("There was an issue submitting your message. Please try again.");
-      }
-    } catch (error) {
-      alert("Error submitting form. Please check your network connection.");
-    } finally {
-      setIsSubmitting(false);
-    }
-  };
+function ErrorComponent({ error, reset }: { error: Error; reset: () => void }) {
+  console.error(error);
+  const router = useRouter();
+  useEffect(() => {
+    reportLovableError(error, { boundary: "tanstack_root_error_component" });
+  }, [error]);
 
   return (
-    <div className="min-h-screen">
-      <header className="sticky top-0 z-50 border-b border-border/70 bg-background/80 backdrop-blur-md">
-        <div className="mx-auto flex max-w-6xl items-center justify-between px-4 py-4">
-          <a href="#about" className="flex items-center gap-2 font-mono text-sm font-semibold tracking-widest">
-            <Lock className="h-4 w-4 text-accent" />
-            SPENCER.SEC
-          </a>
-
-          <nav className="hidden items-center gap-7 md:flex">
-            {NAV.map((item) => (
-              <a
-                key={item.href}
-                href={item.href}
-                className="text-sm text-muted-foreground transition-colors hover:text-accent"
-              >
-                {item.label}
-              </a>
-            ))}
-          </nav>
-
-          <div className="hidden md:block">
-            <Button asChild size="sm">
-              <a href="#contact">Connect</a>
-            </Button>
-          </div>
-
+    <div className="flex min-h-screen items-center justify-center bg-background px-4">
+      <div className="max-w-md text-center">
+        <h1 className="text-xl font-semibold tracking-tight text-foreground">
+          This page did not load
+        </h1>
+        <p className="mt-2 text-sm text-muted-foreground">
+          Something went wrong on our end. You can try refreshing or head back home.
+        </p>
+        <div className="mt-6 flex flex-wrap justify-center gap-2">
           <button
-            className="rounded-md border border-border p-2 md:hidden"
-            onClick={() => setIsMenuOpen((v) => !v)}
-            aria-label="Toggle navigation"
+            onClick={() => {
+              router.invalidate();
+              reset();
+            }}
+            className="inline-flex items-center justify-center rounded-md bg-primary px-4 py-2 text-sm font-medium text-primary-foreground transition-colors hover:bg-primary/90"
           >
-            {isMenuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
+            Try again
           </button>
+          <a
+            href="/"
+            className="inline-flex items-center justify-center rounded-md border border-input bg-background px-4 py-2 text-sm font-medium text-foreground transition-colors hover:bg-accent"
+          >
+            Go home
+          </a>
         </div>
-
-        {isMenuOpen && (
-          <nav className="flex flex-col gap-1 border-t border-border px-4 py-3 md:hidden">
-            {NAV.map((item) => (
-              <a
-                key={item.href}
-                href={item.href}
-                onClick={() => setIsMenuOpen(false)}
-                className="rounded-md px-2 py-2 text-sm text-muted-foreground hover:bg-secondary hover:text-foreground"
-              >
-                {item.label}
-              </a>
-            ))}
-          </nav>
-        )}
-      </header>
-
-      <main>
-        {/* Hero */}
-        <section id="about" className="hero-surface border-b border-border/60">
-          <div className="mx-auto grid max-w-6xl gap-12 px-4 py-20 lg:grid-cols-2 lg:items-center">
-            <div>
-              <span className="inline-flex items-center gap-2 rounded-full border border-accent/40 bg-accent/10 px-3 py-1 font-mono text-xs text-accent">
-                <Activity className="h-3.5 w-3.5" />
-                Enterprise Network Support & Cybersecurity Specialist
-              </span>
-
-              <h1 className="mt-6 text-4xl font-bold leading-tight sm:text-5xl">
-                ASAFA MAHFUZ
-                <span className="block text-gradient">ABIODUN (SPENCER)</span>
-              </h1>
-
-              <p className="mt-6 max-w-xl text-muted-foreground">
-                Enterprise Network Support Intern at Galaxy Backbone, Cybersecurity Analyst, and Backend Developer.
-                Specializing in defensive security, network infrastructure reliability, distributed architectures, and AST-driven static analysis.
-              </p>
-
-              <blockquote className="mt-6 border-l-2 border-accent/60 pl-4 font-mono text-sm italic text-muted-foreground">
-                “Every attack leaves evidence. Every defense begins with preparation.”
-              </blockquote>
-
-              <div className="mt-8 flex flex-wrap gap-3">
-                <Button asChild size="lg">
-                  <a href="#contact">Contact Me</a>
-                </Button>
-                <Button asChild size="lg" className="bg-accent text-accent-foreground hover:bg-accent/90">
-                  <a href="/Asafa_Mahfuz_Abiodun_CV.pdf" download="Asafa_Mahfuz_Abiodun_CV.pdf">
-                    <FileText className="mr-2 h-4 w-4" /> Download CV
-                  </a>
-                </Button>
-                <Button asChild size="lg" variant="outline">
-                  <a href="https://github.com/LifeWithSpencer" target="_blank" rel="noreferrer">
-                    <Github className="h-4 w-4" /> GitHub
-                  </a>
-                </Button>
-                <Button asChild size="lg" variant="outline">
-                  <a href="https://www.linkedin.com/in/mahfuz-asafa-37832b292/" target="_blank" rel="noreferrer">
-                    <Linkedin className="h-4 w-4" /> LinkedIn
-                  </a>
-                </Button>
-                <Button asChild size="lg" variant="outline">
-                  <a href="https://x.com/lifewithspencer" target="_blank" rel="noreferrer">
-                    <Twitter className="h-4 w-4" /> X (Twitter)
-                  </a>
-                </Button>
-              </div>
-            </div>
-
-            <div className="space-y-6">
-              <div className="panel overflow-hidden p-3">
-                <div className="relative overflow-hidden rounded-md">
-                  <img
-                    src="/personal.jpg"
-                    alt="Portrait of Asafa Mahfuz Abiodun"
-                    className="aspect-[4/5] w-full object-cover"
-                  />
-                  <div className="absolute inset-x-0 bottom-0 flex items-center justify-between gap-3 bg-background/85 px-4 py-3 backdrop-blur-sm">
-                    <div className="flex items-center gap-2 text-sm font-medium">
-                      <CheckCircle2 className="h-4 w-4 text-accent" />
-                      Asafa Mahfuz Abiodun
-                    </div>
-                    <span className="rounded-sm border border-accent/40 px-2 py-0.5 font-mono text-[10px] tracking-widest text-accent">
-                      VERIFIED ID
-                    </span>
-                  </div>
-                </div>
-              </div>
-
-              <div className="panel overflow-hidden">
-                <div className="flex items-center justify-between border-b border-border px-4 py-2.5">
-                  <div className="flex items-center gap-2 font-mono text-xs text-muted-foreground">
-                    <Terminal className="h-3.5 w-3.5 text-accent" />
-                    system_status.sh
-                  </div>
-                  <div className="flex gap-1.5">
-                    <span className="h-2.5 w-2.5 rounded-full bg-destructive/70" />
-                    <span className="h-2.5 w-2.5 rounded-full bg-chart-3/70" />
-                    <span className="h-2.5 w-2.5 rounded-full bg-accent/70" />
-                  </div>
-                </div>
-                <div className="space-y-2 p-4 font-mono text-xs sm:text-sm">
-                  {[
-                    ["HANDLE", "SPENCER"],
-                    ["ROLE", "Enterprise/NSS Intern @ Galaxy Backbone"],
-                    ["LEADERSHIP", "President, NAIS | Sec Gen, LSUG | Co-Organizer, Cloud Native"],
-                    ["FOCUS", "Blue Team / SAST / Network Infrastructure / APIs"],
-                  ].map(([k, v]) => (
-                    <p key={k} className="text-muted-foreground">
-                      <span className="text-accent">{k}:</span> {v}
-                    </p>
-                  ))}
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* Experience */}
-        <section id="experience" className="border-b border-border/60">
-          <div className="mx-auto max-w-6xl px-4 py-20">
-            <SectionHeading eyebrow="Career Journey" title="Professional Experience" />
-            <div className="space-y-6">
-              {EXPERIENCE.map((job) => (
-                <article key={job.role} className="panel panel-hover p-6">
-                  <div className="flex flex-wrap items-start justify-between gap-3">
-                    <div>
-                      <h3 className="flex items-center gap-2 text-lg font-semibold">
-                        <job.icon className="h-5 w-5 text-accent" />
-                        {job.role}
-                      </h3>
-                      <p className="mt-1 text-sm text-muted-foreground">{job.org}</p>
-                    </div>
-                    <span className="rounded-full border border-border px-3 py-1 font-mono text-xs text-muted-foreground">
-                      {job.period}
-                    </span>
-                  </div>
-                  <ul className="mt-5 space-y-3">
-                    {job.points.map((p) => (
-                      <li key={p} className="flex gap-3 text-sm text-muted-foreground">
-                        <ChevronRight className="mt-0.5 h-4 w-4 shrink-0 text-accent" />
-                        {p}
-                      </li>
-                    ))}
-                  </ul>
-                </article>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {/* Projects */}
-        <section id="projects" className="border-b border-border/60">
-          <div className="mx-auto max-w-6xl px-4 py-20">
-            <SectionHeading eyebrow="Technical Implementations" title="Featured Projects" />
-            <div className="grid gap-6 md:grid-cols-2">
-              {PROJECTS.map((proj) => (
-                <div key={proj.title} className="panel panel-hover flex flex-col justify-between p-6">
-                  <div>
-                    <div className="flex items-center gap-2">
-                      <Cpu className="h-5 w-5 text-accent" />
-                      <h3 className="text-lg font-semibold">{proj.title}</h3>
-                    </div>
-                    <p className="mt-4 text-sm text-muted-foreground">{proj.desc}</p>
-                  </div>
-                  <div className="mt-6 flex flex-wrap gap-2">
-                    {proj.stack.map((tech) => (
-                      <span
-                        key={tech}
-                        className="rounded-full border border-accent/30 bg-accent/5 px-2.5 py-0.5 font-mono text-xs text-accent"
-                      >
-                        {tech}
-                      </span>
-                    ))}
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {/* Skills */}
-        <section id="skills" className="border-b border-border/60">
-          <div className="mx-auto max-w-6xl px-4 py-20">
-            <SectionHeading eyebrow="Technical Matrix" title="Core Competencies" />
-            <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-              {SKILLS.map((group) => (
-                <div key={group.title} className="panel panel-hover p-6">
-                  <div className="flex items-center gap-2">
-                    <group.icon className="h-5 w-5 text-accent" />
-                    <h3 className="font-semibold">{group.title}</h3>
-                  </div>
-                  <ul className="mt-4 space-y-2">
-                    {group.items.map((item) => (
-                      <li key={item} className="font-mono text-xs text-muted-foreground">
-                        <span className="text-accent">▸</span> {item}
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {/* Leadership */}
-        <section id="leadership" className="border-b border-border/60">
-          <div className="mx-auto max-w-6xl px-4 py-20">
-            <SectionHeading eyebrow="Governance & Service" title="Leadership Experience" />
-            <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-              {LEADERSHIP.map((role) => (
-                <div
-                  key={role.role + role.org}
-                  className={`panel panel-hover p-6 ${role.current ? "ring-1 ring-accent/30" : ""}`}
-                >
-                  {role.current && (
-                    <span className="mb-3 inline-flex items-center gap-2 rounded-full bg-accent/10 px-3 py-1 font-mono text-[10px] uppercase tracking-widest text-accent">
-                      <Award className="h-3 w-3" /> Current Leadership
-                    </span>
-                  )}
-                  <h3 className="text-lg font-semibold">{role.role}</h3>
-                  <p className="mt-1 flex items-start gap-2 text-sm text-accent/80">
-                    <Users className="mt-0.5 h-4 w-4 shrink-0" />
-                    {role.org}
-                  </p>
-                  {role.period && (
-                    <p className="mt-2 font-mono text-xs text-muted-foreground">{role.period}</p>
-                  )}
-                  <p className="mt-3 text-sm text-muted-foreground">{role.desc}</p>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {/* Education & Certifications */}
-        <section id="education" className="border-b border-border/60">
-          <div className="mx-auto max-w-6xl px-4 py-20">
-            <SectionHeading eyebrow="Academic & Professional" title="Education & Certifications" />
-            <div className="grid gap-6 md:grid-cols-2">
-              <div className="panel p-6">
-                <div className="flex items-center gap-4">
-                  <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-lg bg-accent/10">
-                    <GraduationCap className="h-6 w-6 text-accent" />
-                  </div>
-                  <div>
-                    <h3 className="text-lg font-semibold">Bachelor of Science in Computer Science</h3>
-                    <p className="text-sm text-muted-foreground">
-                      Ladoke Akintola University of Technology (LAUTECH)
-                    </p>
-                    <p className="mt-1 font-mono text-xs text-accent">Graduation: 2027 | CGPA: 3.94 / 5.00</p>
-                  </div>
-                </div>
-              </div>
-
-              <div className="panel p-6">
-                <h3 className="text-lg font-semibold">Certifications & Training</h3>
-                <ul className="mt-4 space-y-3 font-mono text-xs text-muted-foreground">
-                  <li className="flex gap-2">
-                    <span className="text-accent">▸</span>
-                    <span>Cisco Networking Academy: Introduction to Cybersecurity</span>
-                  </li>
-                  <li className="flex gap-2">
-                    <span className="text-accent">▸</span>
-                    <span>Federal Ministry of Communications: 3MTT Cloud Computing Programme (Azure)</span>
-                  </li>
-                </ul>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* Contact */}
-        <section id="contact">
-          <div className="mx-auto grid max-w-6xl gap-12 px-4 py-20 lg:grid-cols-2">
-            <div>
-              <SectionHeading eyebrow="Get In Touch" title="Let Us Connect" />
-              <p className="max-w-md text-muted-foreground">
-                Open to enterprise network infrastructure engineering, security operations, SAST/AST security tooling, and backend collaborations.
-              </p>
-
-              <div className="mt-8 space-y-4">
-                <a
-                  href="mailto:mahfuzasafa07@gmail.com"
-                  className="flex items-center gap-3 text-sm text-muted-foreground transition-colors hover:text-accent"
-                >
-                  <Mail className="h-4 w-4 text-accent" />
-                  mahfuzasafa07@gmail.com
-                </a>
-                <p className="flex items-center gap-3 text-sm text-muted-foreground">
-                  <MapPin className="h-4 w-4 text-accent" />
-                  Ogbomoso / Abuja, Nigeria
-                </p>
-                <p className="flex items-center gap-3 text-sm text-muted-foreground">
-                  <Globe className="h-4 w-4 text-accent" />
-                  mahfuzasafa.com
-                </p>
-              </div>
-
-              <div className="mt-8 flex gap-3">
-                <Button asChild variant="outline" size="icon" aria-label="GitHub">
-                  <a href="https://github.com/LifeWithSpencer" target="_blank" rel="noreferrer">
-                    <Github className="h-4 w-4" />
-                  </a>
-                </Button>
-                <Button asChild variant="outline" size="icon" aria-label="LinkedIn">
-                  <a href="https://www.linkedin.com/in/mahfuz-asafa-37832b292/" target="_blank" rel="noreferrer">
-                    <Linkedin className="h-4 w-4" />
-                  </a>
-                </Button>
-                <Button asChild variant="outline" size="icon" aria-label="X (Twitter)">
-                  <a href="https://x.com/lifewithspencer" target="_blank" rel="noreferrer">
-                    <Twitter className="h-4 w-4" />
-                  </a>
-                </Button>
-              </div>
-            </div>
-
-            <form className="panel space-y-4 p-6" onSubmit={handleSubmit}>
-              {formSubmitted && (
-                <div className="rounded-md border border-accent/40 bg-accent/10 p-3 font-mono text-sm text-accent">
-                  ✓ Message sent successfully! I will get back to you soon.
-                </div>
-              )}
-
-              <div className="grid gap-4 sm:grid-cols-2">
-                <div className="space-y-2">
-                  <Label htmlFor="name">Name</Label>
-                  <Input id="name" name="name" placeholder="Your name" required />
-                </div>
-                <div className="space-y-2">
-                  <Label htmlFor="email">Email</Label>
-                  <Input id="email" name="email" type="email" placeholder="you@example.com" required />
-                </div>
-              </div>
-              <div className="space-y-2">
-                <Label htmlFor="subject">Subject</Label>
-                <Input id="subject" name="subject" placeholder="How can I help?" required />
-              </div>
-              <div className="space-y-2">
-                <Label htmlFor="message">Message</Label>
-                <Textarea id="message" name="message" rows={5} placeholder="Write your message..." required />
-              </div>
-              <Button type="submit" className="w-full" disabled={isSubmitting}>
-                {isSubmitting ? "Sending..." : "Send Message"}
-              </Button>
-            </form>
-          </div>
-        </section>
-      </main>
-
-      <footer className="border-t border-border/60 py-8">
-        <div className="mx-auto max-w-6xl px-4 text-center">
-          <p className="font-mono text-xs text-muted-foreground">
-            © {new Date().getFullYear()} ASAFA MAHFUZ ABIODUN (SPENCER). All rights reserved.
-          </p>
-          <p className="mt-2 text-xs text-muted-foreground">
-            Designed with precision for secure digital operations.
-          </p>
-        </div>
-      </footer>
+      </div>
     </div>
+  );
+}
+
+export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()({
+  head: () => ({
+    meta: [
+      { charSet: "utf-8" },
+      { name: "viewport", content: "width=device-width, initial-scale=1" },
+      { title: "Asafa Mahfuz Abiodun (Spencer) — SOC & Network Analyst" },
+      {
+        name: "description",
+        content:
+          "Portfolio of Asafa Mahfuz Abiodun (Spencer). NOC Intern at Galaxy Backbone, SOC Analyst, and student leader specializing in blue team defense.",
+      },
+      { name: "author", content: "Asafa Mahfuz Abiodun" },
+      {
+        name: "keywords",
+        content:
+          "Asafa Mahfuz Abiodun, Spencer, SOC Analyst, Network Analyst, Cybersecurity, Galaxy Backbone, Blue Team, LAUTECH",
+      },
+      { property: "og:type", content: "website" },
+      { property: "og:url", content: "https://mahfuzasafa.com" },
+      { property: "og:title", content: "Asafa Mahfuz Abiodun (Spencer) — SOC & Network Analyst" },
+      {
+        property: "og:description",
+        content:
+          "Portfolio of Asafa Mahfuz Abiodun (Spencer). NOC Intern at Galaxy Backbone, SOC Analyst, and student leader specializing in blue team defense.",
+      },
+      { property: "og:image", content: "https://mahfuzasafa.com/personal.jpg" },
+      { name: "twitter:card", content: "summary_large_image" },
+      { name: "twitter:site", content: "@lifewithspencer" },
+      { name: "twitter:title", content: "Asafa Mahfuz Abiodun (Spencer) — SOC & Network Analyst" },
+      {
+        name: "twitter:description",
+        content:
+          "Portfolio of Asafa Mahfuz Abiodun (Spencer). NOC Intern at Galaxy Backbone, SOC Analyst, and student leader specializing in blue team defense.",
+      },
+      { name: "twitter:image", content: "https://mahfuzasafa.com/personal.jpg" },
+    ],
+    links: [
+      { rel: "canonical", href: "https://mahfuzasafa.com" },
+      {
+        rel: "icon",
+        type: "image/png",
+        href: "/favicon.png",
+      },
+      {
+        rel: "shortcut icon",
+        type: "image/png",
+        href: "/favicon.png",
+      },
+      {
+        rel: "stylesheet",
+        href: appCss,
+      },
+      { rel: "preconnect", href: "https://fonts.googleapis.com" },
+      { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
+      {
+        rel: "stylesheet",
+        href: "https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap",
+      },
+    ],
+    scripts: [
+      {
+        type: "application/ld+json",
+        children: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "Person",
+          name: "Asafa Mahfuz Abiodun",
+          alternateName: "Spencer",
+          url: "https://mahfuzasafa.com",
+          image: "https://mahfuzasafa.com/personal.jpg",
+          jobTitle: "SOC Analyst & Network Operations Trainee",
+          worksFor: {
+            "@type": "Organization",
+            name: "Galaxy Backbone Ltd.",
+          },
+          sameAs: [
+            "https://github.com/LifeWithSpencer",
+            "https://www.linkedin.com/in/mahfuz-asafa-37832b292/",
+            "https://x.com/lifewithspencer",
+          ],
+        }),
+      },
+    ],
+  }),
+
+  shellComponent: RootShell,
+  component: RootComponent,
+  notFoundComponent: NotFoundComponent,
+  errorComponent: ErrorComponent,
+});
+
+function RootShell({ children }: { children: ReactNode }) {
+  return (
+    <html lang="en">
+      <head>
+        <HeadContent />
+      </head>
+      <body>
+        {children}
+        <Scripts />
+      </body>
+    </html>
+  );
+}
+
+function RootComponent() {
+  const { queryClient } = Route.useRouteContext();
+
+  return (
+    <QueryClientProvider client={queryClient}>
+      {/* Required: nested routes render here. Removing <Outlet /> breaks all child routes. */}
+      <Outlet />
+    </QueryClientProvider>
   );
 }
