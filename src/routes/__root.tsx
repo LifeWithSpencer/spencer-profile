@@ -334,7 +334,7 @@ function Portfolio() {
 
               <p className="mt-6 max-w-xl text-muted-foreground">
                 Enterprise Network Support Intern at Galaxy Backbone, Cybersecurity Analyst, and Backend Developer.
-                Specializing in defensive security, network infrastructure reliability, distributed architectures, and AST-driven static analysis[cite: 1].
+                Specializing in defensive security, network infrastructure reliability, distributed architectures, and AST-driven static analysis.
               </p>
 
               <blockquote className="mt-6 border-l-2 border-accent/60 pl-4 font-mono text-sm italic text-muted-foreground">
@@ -547,9 +547,9 @@ function Portfolio() {
                   <div>
                     <h3 className="text-lg font-semibold">Bachelor of Science in Computer Science</h3>
                     <p className="text-sm text-muted-foreground">
-                      Ladoke Akintola University of Technology (LAUTECH)[cite: 1]
+                      Ladoke Akintola University of Technology (LAUTECH)
                     </p>
-                    <p className="mt-1 font-mono text-xs text-accent">Graduation: 2027 | CGPA: 3.94 / 5.00[cite: 1]</p>
+                    <p className="mt-1 font-mono text-xs text-accent">Graduation: 2027 | CGPA: 3.94 / 5.00</p>
                   </div>
                 </div>
               </div>
@@ -559,11 +559,11 @@ function Portfolio() {
                 <ul className="mt-4 space-y-3 font-mono text-xs text-muted-foreground">
                   <li className="flex gap-2">
                     <span className="text-accent">▸</span>
-                    <span>Cisco Networking Academy: Introduction to Cybersecurity[cite: 1]</span>
+                    <span>Cisco Networking Academy: Introduction to Cybersecurity</span>
                   </li>
                   <li className="flex gap-2">
                     <span className="text-accent">▸</span>
-                    <span>Federal Ministry of Communications: 3MTT Cloud Computing Programme (Azure)[cite: 1]</span>
+                    <span>Federal Ministry of Communications: 3MTT Cloud Computing Programme (Azure)</span>
                   </li>
                 </ul>
               </div>
@@ -586,15 +586,15 @@ function Portfolio() {
                   className="flex items-center gap-3 text-sm text-muted-foreground transition-colors hover:text-accent"
                 >
                   <Mail className="h-4 w-4 text-accent" />
-                  mahfuzasafa07@gmail.com[cite: 1]
+                  mahfuzasafa07@gmail.com
                 </a>
                 <p className="flex items-center gap-3 text-sm text-muted-foreground">
                   <MapPin className="h-4 w-4 text-accent" />
-                  Ogbomoso / Abuja, Nigeria[cite: 1]
+                  Ogbomoso / Abuja, Nigeria
                 </p>
                 <p className="flex items-center gap-3 text-sm text-muted-foreground">
                   <Globe className="h-4 w-4 text-accent" />
-                  mahfuzasafa.com[cite: 1]
+                  mahfuzasafa.com
                 </p>
               </div>
 
