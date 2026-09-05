@@ -22,6 +22,8 @@ import {
   X,
   MapPin,
   FileText,
+  Cpu,
+  Layers,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -29,30 +31,13 @@ import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
 
 export const Route = createFileRoute("/")({
-  head: () => ({
-    meta: [
-      { title: "Asafa Mahfuz Abiodun (Spencer) — SOC & Network Analyst" },
-      {
-        name: "description",
-        content:
-          "Portfolio of Asafa Mahfuz Abiodun (Spencer). SOC Analyst, and student leader specializing in blue team defense.",
-      },
-      { property: "og:title", content: "Asafa Mahfuz Abiodun (Spencer) — SOC & Network Analyst" },
-      {
-        property: "og:description",
-        content:
-          "Portfolio of Asafa Mahfuz Abiodun (Spencer). SOC Analyst, and student leader specializing in blue team defense.",
-      },
-      { property: "og:type", content: "website" },
-      { name: "twitter:card", content: "summary_large_image" },
-    ],
-  }),
   component: Portfolio,
 });
 
 const NAV = [
   { label: "About", href: "#about" },
   { label: "Experience", href: "#experience" },
+  { label: "Projects", href: "#projects" },
   { label: "Skills", href: "#skills" },
   { label: "Leadership", href: "#leadership" },
   { label: "Education", href: "#education" },
@@ -61,57 +46,95 @@ const NAV = [
 
 const EXPERIENCE = [
   {
-    role: "Information Technology Intern (SIWES)",
-    org: "SQI College of ICT — Ogbomoso, Oyo State (On-Site)",
-    period: "Aug 2025 – Nov 2025",
-    icon: Code,
+    role: "Enterprise/NSS Intern",
+    org: "Galaxy Backbone",
+    period: "August 2026 – Present",
+    icon: Server,
     points: [
-      "Completed practical training in software development and web infrastructure.",
-      "Developed responsive web applications using HTML, CSS, JavaScript, and Node.js.",
-      "Utilized Git and GitHub for team collaboration, version control, and repository administration.",
+      "Monitored and supported enterprise network infrastructure within the Enterprise and Network Support Services unit.",
+      "Diagnosed connectivity issues, reconfigured IP telephony endpoints, and maintained network uptime across enterprise systems.",
+      "Collaborated with support engineers on diagnostics, hardware auditing, and infrastructure maintenance across public sector networks.",
     ],
+  },
+  {
+    role: "Cybersecurity Intern",
+    org: "SQI College of ICT",
+    period: "August 2025 – November 2025",
+    icon: Shield,
+    points: [
+      "Conducted defensive security assessments and vulnerability remediation exercises across simulated networked environments.",
+      "Integrated security best practices into fullstack web development training modules and mentored trainees on core cybersecurity concepts.",
+      "Formulated hands-on technical lab curriculums covering packet inspection, reconnaissance, and system hardening.",
+    ],
+  },
+];
+
+const PROJECTS = [
+  {
+    title: "FluxGuard Distributed Rate Limiter and API Gateway",
+    stack: ["Python", "FastAPI", "Redis", "Docker", "Nginx", "Lua"],
+    desc: "A horizontally scalable distributed API gateway supporting sliding-window and token-bucket rate limiting with atomic Redis Lua script execution. Implemented an asynchronous circuit breaker with local in-memory fallback and zero fail-open exposure. Benchmarked under 500 concurrent workers with zero token leakage.",
+  },
+  {
+    title: "CerberusCLI Autonomous SAST Engine and Security Linter",
+    stack: ["Python", "AST", "Static Analysis", "SARIF", "Click", "Rich"],
+    desc: "An autonomous Python SAST CLI scanner using ast.NodeVisitor with symbol aliasing resolution and intra-procedural scope-isolated taint tracking. Features modular plugins detecting SQL injection, command execution, unsafe deserialization, and weak cryptography with SARIF 2.1.0 output for CI/CD integration.",
   },
 ];
 
 const SKILLS = [
   {
-    title: "Cybersecurity",
+    title: "Languages & Frameworks",
+    icon: Code,
+    items: [
+      "Python",
+      "Node.js",
+      "FastAPI",
+      "Express",
+      "Bash",
+      "Lua",
+      "RESTful APIs",
+      "HTML5 & CSS3",
+    ],
+  },
+  {
+    title: "Cybersecurity & Analysis",
     icon: Shield,
     items: [
-      "Security Operations (Blue Team)",
-      "Incident Response",
-      "Threat Intelligence",
-      "Security Monitoring",
-      "SIEM Fundamentals",
-      "Vulnerability Assessment",
+      "SAST / AST Analysis",
+      "Taint Tracking",
+      "Shannon Entropy",
+      "OWASP Top 10",
+      "CWE Vulnerability Mapping",
+      "Wireshark & Burp Suite",
+      "Network Reconnaissance",
+      "Threat Hunting",
     ],
   },
   {
-    title: "Networking",
+    title: "Cloud & Storage",
+    icon: Layers,
+    items: [
+      "Redis",
+      "MongoDB",
+      "Nginx",
+      "Docker",
+      "AWS & Azure",
+      "VirtualBox",
+      "Netlify & Hostinger DNS",
+    ],
+  },
+  {
+    title: "Networking & Systems",
     icon: Network,
     items: [
-      "Network Operations",
-      "Troubleshooting",
-      "TCP/IP, DNS, DHCP",
-      "Routing & Switching",
+      "Linux (Pop!_OS, Ubuntu CLI)",
+      "Windows OS",
+      "Cisco Packet Tracer",
+      "Git & GitHub",
+      "Click CLI & Rich",
       "Infrastructure Monitoring",
     ],
-  },
-  {
-    title: "Systems & Tools",
-    icon: Terminal,
-    items: [
-      "Linux Administration",
-      "Windows Administration",
-      "Wireshark & Nmap",
-      "Git & GitHub",
-      "Technical Documentation",
-    ],
-  },
-  {
-    title: "Web Development",
-    icon: Globe,
-    items: ["HTML5 & CSS3", "JavaScript", "Node.js", "Responsive Web Design"],
   },
 ];
 
@@ -120,6 +143,21 @@ const LEADERSHIP = [
     role: "President",
     org: "National Association of Ikire Students (NAIS), LAUTECH Chapter",
     desc: "Leading student governance initiatives, coordinating executive committee operations, managing stakeholder relations, and directing student advocacy across campus.",
+    period: "May 2026 – Present",
+    current: true,
+  },
+  {
+    role: "Secretary General",
+    org: "LAUTECH Students Union Government (LSUG)",
+    desc: "Serving as chief administrative officer, overseeing institutional documentation, official correspondence, and cross-executive governance.",
+    period: "July 2026 – Present",
+    current: true,
+  },
+  {
+    role: "Co-Organizer",
+    org: "Cloud Native Ogbomoso",
+    desc: "Spearheading a developer community focused on cloud-native technologies, organizing meetups, and fostering technical collaboration among students and engineers.",
+    period: "January 2026 – Present",
     current: true,
   },
   {
@@ -268,7 +306,7 @@ function Portfolio() {
             <div>
               <span className="inline-flex items-center gap-2 rounded-full border border-accent/40 bg-accent/10 px-3 py-1 font-mono text-xs text-accent">
                 <Activity className="h-3.5 w-3.5" />
-                SOC Analyst & Network Operations Trainee
+                Enterprise Network Support & Cybersecurity Specialist
               </span>
 
               <h1 className="mt-6 text-4xl font-bold leading-tight sm:text-5xl">
@@ -277,13 +315,12 @@ function Portfolio() {
               </h1>
 
               <p className="mt-6 max-w-xl text-muted-foreground">
-                Cybersecurity Analyst, Network Operations Specialist, and Student Leader. Focused on
-                defensive security, incident response, network monitoring, and enterprise digital
-                infrastructure defense.
+                Enterprise Network Support Intern at Galaxy Backbone, Cybersecurity Analyst, and Backend Developer.
+                Specializing in defensive security, network infrastructure reliability, distributed architectures, and AST-driven static analysis.
               </p>
 
               <blockquote className="mt-6 border-l-2 border-accent/60 pl-4 font-mono text-sm italic text-muted-foreground">
-                "Every attack leaves evidence. Every defense begins with preparation."
+                “Every attack leaves evidence. Every defense begins with preparation.”
               </blockquote>
 
               <div className="mt-8 flex flex-wrap gap-3">
@@ -296,7 +333,7 @@ function Portfolio() {
                   </a>
                 </Button>
                 <Button asChild size="lg" variant="outline">
-                  <a href="https://github.com" target="_blank" rel="noreferrer">
+                  <a href="https://github.com/LifeWithSpencer" target="_blank" rel="noreferrer">
                     <Github className="h-4 w-4" /> GitHub Profile
                   </a>
                 </Button>
@@ -318,7 +355,7 @@ function Portfolio() {
                 <div className="relative overflow-hidden rounded-md">
                   <img
                     src="/personal.jpg"
-                    alt="Portrait of Asafa Mahfuz Abiodun (Spencer)"
+                    alt="Portrait of Asafa Mahfuz Abiodun"
                     className="aspect-[4/5] w-full object-cover"
                   />
                   <div className="absolute inset-x-0 bottom-0 flex items-center justify-between gap-3 bg-background/85 px-4 py-3 backdrop-blur-sm">
@@ -348,8 +385,9 @@ function Portfolio() {
                 <div className="space-y-2 p-4 font-mono text-xs sm:text-sm">
                   {[
                     ["HANDLE", "SPENCER"],
-                    ["LEADERSHIP", "President, NAIS LAUTECH"],
-                    ["FOCUS", "Blue Team / SOC / Incident Response"],
+                    ["ROLE", "Enterprise/NSS Intern @ Galaxy Backbone"],
+                    ["LEADERSHIP", "President, NAIS | Sec Gen, LSUG | Co-Organizer, Cloud Native"],
+                    ["FOCUS", "Blue Team / SAST / Network Infrastructure / APIs"],
                   ].map(([k, v]) => (
                     <p key={k} className="text-muted-foreground">
                       <span className="text-accent">{k}:</span> {v}
@@ -389,6 +427,36 @@ function Portfolio() {
                     ))}
                   </ul>
                 </article>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* Projects */}
+        <section id="projects" className="border-b border-border/60">
+          <div className="mx-auto max-w-6xl px-4 py-20">
+            <SectionHeading eyebrow="Technical Implementations" title="Featured Projects" />
+            <div className="grid gap-6 md:grid-cols-2">
+              {PROJECTS.map((proj) => (
+                <div key={proj.title} className="panel panel-hover flex flex-col justify-between p-6">
+                  <div>
+                    <div className="flex items-center gap-2">
+                      <Cpu className="h-5 w-5 text-accent" />
+                      <h3 className="text-lg font-semibold">{proj.title}</h3>
+                    </div>
+                    <p className="mt-4 text-sm text-muted-foreground">{proj.desc}</p>
+                  </div>
+                  <div className="mt-6 flex flex-wrap gap-2">
+                    {proj.stack.map((tech) => (
+                      <span
+                        key={tech}
+                        className="rounded-full border border-accent/30 bg-accent/5 px-2.5 py-0.5 font-mono text-xs text-accent"
+                      >
+                        {tech}
+                      </span>
+                    ))}
+                  </div>
+                </div>
               ))}
             </div>
           </div>
@@ -438,6 +506,9 @@ function Portfolio() {
                     <Users className="mt-0.5 h-4 w-4 shrink-0" />
                     {role.org}
                   </p>
+                  {role.period && (
+                    <p className="mt-2 font-mono text-xs text-muted-foreground">{role.period}</p>
+                  )}
                   <p className="mt-3 text-sm text-muted-foreground">{role.desc}</p>
                 </div>
               ))}
@@ -445,31 +516,39 @@ function Portfolio() {
           </div>
         </section>
 
-        {/* Education */}
+        {/* Education & Certifications */}
         <section id="education" className="border-b border-border/60">
           <div className="mx-auto max-w-6xl px-4 py-20">
-            <SectionHeading eyebrow="Academic Background" title="Education" />
-            <div className="panel flex flex-col gap-6 p-6 sm:flex-row sm:items-center">
-              <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-lg bg-accent/10">
-                <GraduationCap className="h-7 w-7 text-accent" />
+            <SectionHeading eyebrow="Academic & Professional" title="Education & Certifications" />
+            <div className="grid gap-6 md:grid-cols-2">
+              <div className="panel p-6">
+                <div className="flex items-center gap-4">
+                  <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-lg bg-accent/10">
+                    <GraduationCap className="h-6 w-6 text-accent" />
+                  </div>
+                  <div>
+                    <h3 className="text-lg font-semibold">Bachelor of Science in Computer Science</h3>
+                    <p className="text-sm text-muted-foreground">
+                      Ladoke Akintola University of Technology (LAUTECH)
+                    </p>
+                    <p className="mt-1 font-mono text-xs text-accent">Graduation: 2027 | CGPA: 3.94 / 5.00</p>
+                  </div>
+                </div>
               </div>
-              <div>
-                <h3 className="text-lg font-semibold">Bachelor of Science (B.Sc.) in Computer Science</h3>
-                <p className="mt-1 text-sm text-muted-foreground">
-                  Ladoke Akintola University of Technology (LAUTECH), Nigeria
-                </p>
-                <p className="mt-1 font-mono text-xs text-accent">Status: In View</p>
+
+              <div className="panel p-6">
+                <h3 className="text-lg font-semibold">Certifications & Training</h3>
+                <ul className="mt-4 space-y-3 font-mono text-xs text-muted-foreground">
+                  <li className="flex gap-2">
+                    <span className="text-accent">▸</span>
+                    <span>Cisco Networking Academy: Introduction to Cybersecurity</span>
+                  </li>
+                  <li className="flex gap-2">
+                    <span className="text-accent">▸</span>
+                    <span>Federal Ministry of Communications: 3MTT Cloud Computing Programme (Azure)</span>
+                  </li>
+                </ul>
               </div>
-            </div>
-            <div className="mt-6 flex flex-wrap gap-2">
-              {["Systems Architecture", "Network Security", "Algorithms"].map((tag) => (
-                <span
-                  key={tag}
-                  className="rounded-full border border-border px-3 py-1 font-mono text-xs text-muted-foreground"
-                >
-                  {tag}
-                </span>
-              ))}
             </div>
           </div>
         </section>
@@ -480,8 +559,7 @@ function Portfolio() {
             <div>
               <SectionHeading eyebrow="Get In Touch" title="Let Us Connect" />
               <p className="max-w-md text-muted-foreground">
-                Open to security operations, network infrastructure, incident response opportunities,
-                and technical collaborations.
+                Open to enterprise network infrastructure engineering, security operations, SAST/AST security tooling, and backend collaborations.
               </p>
 
               <div className="mt-8 space-y-4">
@@ -494,7 +572,7 @@ function Portfolio() {
                 </a>
                 <p className="flex items-center gap-3 text-sm text-muted-foreground">
                   <MapPin className="h-4 w-4 text-accent" />
-                  Lagos, Nigeria
+                  Ogbomoso / Abuja, Nigeria
                 </p>
                 <p className="flex items-center gap-3 text-sm text-muted-foreground">
                   <Globe className="h-4 w-4 text-accent" />
@@ -504,12 +582,12 @@ function Portfolio() {
 
               <div className="mt-8 flex gap-3">
                 <Button asChild variant="outline" size="icon" aria-label="GitHub">
-                  <a href="https://github.com" target="_blank" rel="noreferrer">
+                  <a href="https://github.com/LifeWithSpencer" target="_blank" rel="noreferrer">
                     <Github className="h-4 w-4" />
                   </a>
                 </Button>
                 <Button asChild variant="outline" size="icon" aria-label="LinkedIn">
-                  <a href="https://linkedin.com" target="_blank" rel="noreferrer">
+                  <a href="https://www.linkedin.com/in/mahfuz-asafa-37832b292/" target="_blank" rel="noreferrer">
                     <Linkedin className="h-4 w-4" />
                   </a>
                 </Button>
