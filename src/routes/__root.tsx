@@ -9,7 +9,7 @@ import {
 } from "@tanstack/react-router";
 import { useEffect, type ReactNode } from "react";
 
-import appCss from "../styles.css?url";
+import "../styles.css";
 import { reportLovableError } from "../lib/lovable-error-reporting";
 
 function NotFoundComponent() {
@@ -77,11 +77,11 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Asafa Mahfuz Abiodun (Spencer) — SOC & Network Analyst" },
+      { title: "Asafa Mahfuz Abiodun (Spencer) — Enterprise/NSS & Security Specialist" },
       {
         name: "description",
         content:
-          "Portfolio of Asafa Mahfuz Abiodun (Spencer). NOC Intern at Galaxy Backbone, SOC Analyst, and student leader specializing in blue team defense.",
+          "Portfolio of Asafa Mahfuz Abiodun (Spencer). Enterprise and Network Support Services Intern at Galaxy Backbone, Cybersecurity Specialist, and LAUTECH Student Leader.",
       },
       { name: "author", content: "Asafa Mahfuz Abiodun" },
       {
@@ -91,20 +91,20 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       },
       { property: "og:type", content: "website" },
       { property: "og:url", content: "https://mahfuzasafa.com" },
-      { property: "og:title", content: "Asafa Mahfuz Abiodun (Spencer) — SOC & Network Analyst" },
+      { property: "og:title", content: "Asafa Mahfuz Abiodun (Spencer) — Enterprise/NSS & Security Specialist" },
       {
         property: "og:description",
         content:
-          "Portfolio of Asafa Mahfuz Abiodun (Spencer). NOC Intern at Galaxy Backbone, SOC Analyst, and student leader specializing in blue team defense.",
+          "Portfolio of Asafa Mahfuz Abiodun (Spencer). Enterprise and Network Support Services Intern at Galaxy Backbone, Cybersecurity Specialist, and LAUTECH Student Leader.",
       },
       { property: "og:image", content: "https://mahfuzasafa.com/personal.jpg" },
       { name: "twitter:card", content: "summary_large_image" },
       { name: "twitter:site", content: "@lifewithspencer" },
-      { name: "twitter:title", content: "Asafa Mahfuz Abiodun (Spencer) — SOC & Network Analyst" },
+      { name: "twitter:title", content: "Asafa Mahfuz Abiodun (Spencer) — Enterprise/NSS & Security Specialist" },
       {
         name: "twitter:description",
         content:
-          "Portfolio of Asafa Mahfuz Abiodun (Spencer). NOC Intern at Galaxy Backbone, SOC Analyst, and student leader specializing in blue team defense.",
+          "Portfolio of Asafa Mahfuz Abiodun (Spencer). Enterprise and Network Support Services Intern at Galaxy Backbone, Cybersecurity Specialist, and LAUTECH Student Leader.",
       },
       { name: "twitter:image", content: "https://mahfuzasafa.com/personal.jpg" },
     ],
@@ -119,10 +119,6 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
         rel: "shortcut icon",
         type: "image/png",
         href: "/favicon.png",
-      },
-      {
-        rel: "stylesheet",
-        href: appCss,
       },
       { rel: "preconnect", href: "https://fonts.googleapis.com" },
       { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
@@ -141,7 +137,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
           alternateName: "Spencer",
           url: "https://mahfuzasafa.com",
           image: "https://mahfuzasafa.com/personal.jpg",
-          jobTitle: "SOC Analyst & Network Operations Trainee",
+          jobTitle: "Enterprise and Network Support Services Intern",
           worksFor: {
             "@type": "Organization",
             name: "Galaxy Backbone Ltd.",
