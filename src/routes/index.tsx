@@ -85,6 +85,11 @@ const PROJECTS = [
     stack: ["Python", "FastAPI", "Web Crypto API", "SHA-256", "Tailwind CSS", "JavaScript"],
     desc: "A tamper-evident credential verification engine using client-side SHA-256 cryptographic hashing to validate institutional documents against an immutable registry without exposing sensitive file contents.",
   },
+  {
+    title: "CivicPulse Real-Time Public Infrastructure Incident Response Engine",
+    stack: ["Python", "FastAPI", "Leaflet.js", "CartoDB DarkMatter", "Tailwind CSS", "JavaScript"],
+    desc: "A municipal incident telemetry platform providing geospatial fault mapping, automated severity classification, and cross-agency dispatch workflows for water, road, and power infrastructure.",
+  },
 ];
 
 const SKILLS = [
