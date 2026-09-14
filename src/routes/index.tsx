@@ -80,6 +80,11 @@ const PROJECTS = [
     stack: ["Python", "AST", "Static Analysis", "SARIF", "Click", "Rich"],
     desc: "An autonomous Python SAST CLI scanner using ast.NodeVisitor with symbol aliasing resolution and intra-procedural scope-isolated taint tracking. Features modular plugins detecting SQL injection, command execution, unsafe deserialization, and weak cryptography with SARIF 2.1.0 output for CI/CD integration.",
   },
+  {
+    title: "CertVault Sovereign Document Verification and Anti-Fraud Engine",
+    stack: ["Python", "FastAPI", "Web Crypto API", "SHA-256", "Tailwind CSS", "JavaScript"],
+    desc: "A tamper-evident credential verification engine using client-side SHA-256 cryptographic hashing to validate institutional documents against an immutable registry without exposing sensitive file contents.",
+  },
 ];
 
 const SKILLS = [
